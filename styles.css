@@ -85,11 +85,6 @@ button:hover {
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
-#liftChart {
-    margin: 1rem 0;
-    width: 100% !important;
-}
-
 @media (max-width: 767px) {
     #liftChart {
         height: 250px !important;
