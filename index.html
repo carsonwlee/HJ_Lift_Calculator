@@ -28,8 +28,15 @@
       <p>Speed When Adding to VREF: <span id="adjustedSpeed">0</span> knots</p>
       <p>Additional Max Lift compared to VREF: <span id="liftIncreaseVref">0</span>%</p>
       <p>Additional Max Lift compared to Minimum Flying Speed: <span id="liftIncreaseMin">0</span>%</p>
+      <p>Angle of Attack at Minimum Flying Speed: <span id="aoaMin">0</span>°</p>
+      <p>Angle of Attack at VREF Speed: <span id="aoaVref">0</span>°</p>
+      <p>Angle of Attack at Adjusted Speed: <span id="aoaAdjusted">0</span>°</p>
     </div>
-    <canvas id="liftChart"></canvas>
+    <div class="chart-container">
+      <div class="chart-wrapper">
+        <canvas id="liftChart"></canvas>
+      </div>
+    </div>
     <div class="disclaimer">
       <p><strong>Disclaimer:</strong> This tool provides approximate calculations for educational purposes only. All calculations are based on standard pressure and temperature conditions with flaps in the landing position. The lift increase shown represents the maximum possible increase. Always consult the official Aircraft Flight Manual (AFM) and follow all regulatory guidelines for flight operations. Do not rely solely on this tool for critical flight decisions.</p>
     </div>

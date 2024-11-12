@@ -85,13 +85,34 @@ button:hover {
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
+.chart-container {
+    margin: 1rem 0;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.chart-wrapper {
+    width: 100%;
+    height: 300px;
+}
+
 @media (max-width: 767px) {
-    #liftChart {
+    #liftChart, #aoaGauge {
         height: 250px !important;
     }
     
     .container {
         padding: 0.5rem;
+    }
+    
+    .chart-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .gauge-wrapper {
+        max-width: 100%;
     }
 }
 
@@ -112,7 +133,7 @@ button:hover {
         font-size: 0.9rem;
     }
     
-    #liftChart {
+    #liftChart, #aoaGauge {
         height: 300px !important;
     }
 }

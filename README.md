@@ -7,7 +7,8 @@ The HondaJet Lift Increase Calculator is a web-based tool designed to help pilot
 - Calculate Minimum Flying Speed based on landing weight
 - Determine VREF (Reference Speed) for approach
 - Account for additional speed a pilot may add to VREF
-- Visualize lift increases through an interactive chart
+- Calculate and display Angle of Attack at different speeds
+- Visualize lift increases through an interactive bar chart
 - Real-time calculations and updates
 
 ## How It Works
@@ -61,6 +62,16 @@ L = W × (V / V_min)²
 Lift increases are calculated as percentages:
 - Increase from VREF: ((L_adjusted / L_vref) - 1) × 100
 - Increase from Minimum Flying Speed: ((L_adjusted / L_min) - 1) × 100
+
+### 3. Angle of Attack Calculations
+The calculator estimates the Angle of Attack (AOA) at different speeds:
+- At minimum flying speed (maximum AOA)
+- At VREF speed (reduced AOA)
+- At adjusted approach speed (further reduced AOA)
+
+The AOA is calculated based on the relationship between lift coefficient and velocity:
+- Maximum AOA is 15° at minimum flying speed
+- AOA decreases with the square of the velocity ratio
 
 ## Technical Implementation
 

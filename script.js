@@ -1,3 +1,6 @@
+// Add this at the top of script.js, outside any functions
+let liftChart = null;
+
 document.getElementById('calculateBtn').addEventListener('click', calculateLift);
 
 // Call calculateLift on page load to perform initial calculation
@@ -26,6 +29,7 @@ function calculateLift() {
   const minFlyingSpeed1 = 80;
   const weight2 = 11100;
   const minFlyingSpeed2 = 101;
+  const maxAoA = 15; // Critical AOA in degrees
 
   const k1 = minFlyingSpeed1 / Math.sqrt(weight1);
   const k2 = minFlyingSpeed2 / Math.sqrt(weight2);
@@ -55,35 +59,33 @@ function calculateLift() {
   // Calculate percentage increase in lift compared to Minimum Flying Speed
   const liftIncreaseMin = (((liftAdjusted / liftMin) - 1) * 100).toFixed(2);
 
-  // Update the results on the page
+  // Calculate AOA at each speed
+  // AOA is inversely proportional to the square of the velocity ratio
+  const aoaMin = maxAoA.toFixed(1); // At minimum flying speed (max AOA)
+  const aoaVref = (maxAoA * Math.pow(minFlyingSpeed / vrefSpeed, 2)).toFixed(1);
+  const aoaAdjusted = (maxAoA * Math.pow(minFlyingSpeed / adjustedSpeed, 2)).toFixed(1);
+
+  // Update display
   document.getElementById('minFlyingSpeed').textContent = minFlyingSpeed;
   document.getElementById('vrefSpeed').textContent = vrefSpeed;
   document.getElementById('adjustedSpeed').textContent = adjustedSpeed;
   document.getElementById('liftIncreaseVref').textContent = liftIncreaseVref;
   document.getElementById('liftIncreaseMin').textContent = liftIncreaseMin;
+  document.getElementById('aoaMin').textContent = aoaMin;
+  document.getElementById('aoaVref').textContent = aoaVref;
+  document.getElementById('aoaAdjusted').parentElement.innerHTML = 
+    `Angle of Attack at ${windCorrection}kts above VREF: <span id="aoaAdjusted">${aoaAdjusted}</span>°`;
 
-  // Generate data for the chart
-  const labels = ['Minimum Flying Speed', 'VREF Speed', `${windCorrection} Knots Added To VREF`];
+  // Update lift chart
+  const labels = ['Minimum Flying Speed', 'VREF Speed', `Speed at ${windCorrection}kts above VREF`];
   const liftData = [liftMin, liftVref, liftAdjusted];
-
-  // Update or create the chart
-  updateChart(labels, liftData);
-}
-
-let liftChart; // Global variable to hold the chart instance
-
-function updateChart(labels, liftData) {
-  const ctx = document.getElementById('liftChart').getContext('2d');
-
-  const chartLabels = ['Minimum Flying Speed', 'VREF Speed', `${windCorrection} Knots Added To VREF`];
-
+  
   if (liftChart) {
-    // Update the chart data
     liftChart.data.labels = labels;
     liftChart.data.datasets[0].data = liftData;
     liftChart.update();
   } else {
-    // Create a new chart
+    const ctx = document.getElementById('liftChart').getContext('2d');
     liftChart = new Chart(ctx, {
       type: 'bar',
       data: {
@@ -95,7 +97,17 @@ function updateChart(labels, liftData) {
         }]
       },
       options: {
-        indexAxis: 'x',
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Lift (lbs)'
+            }
+          }
+        },
         plugins: {
           legend: {
             display: false
@@ -106,32 +118,9 @@ function updateChart(labels, liftData) {
                 return `Lift: ${context.parsed.y.toLocaleString()} lbs`;
               }
             }
-          },
-          datalabels: {
-            anchor: 'end',
-            align: 'top',
-            formatter: function(value) {
-              return `${value.toLocaleString()} lbs`;
-            }
-          }
-        },
-        scales: {
-          y: {
-            beginAtZero: true,
-            title: {
-              display: true,
-              text: 'Lift (lbs)'
-            }
-          },
-          x: {
-            title: {
-              display: true,
-              text: ''
-            }
           }
         }
-      },
-      plugins: [ChartDataLabels]
+      }
     });
   }
 }
