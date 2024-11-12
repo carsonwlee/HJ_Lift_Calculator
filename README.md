@@ -94,7 +94,7 @@ Lift increases are calculated as percentages:
 No installation required. Access the calculator through any modern web browser.
 
 ## Browser Compatibility
-- Chrome (recommended)
+- Chrome
 - Firefox
 - Safari
 - Edge
