@@ -63,7 +63,7 @@ function calculateLift() {
   document.getElementById('liftIncreaseMin').textContent = liftIncreaseMin;
 
   // Generate data for the chart
-  const labels = ['Minimum Flying Speed', 'VREF Speed', 'Wind Adjusted Speed'];
+  const labels = ['Minimum Flying Speed', 'VREF Speed', `${windCorrection} Knots Added To VREF`];
   const liftData = [liftMin, liftVref, liftAdjusted];
 
   // Update or create the chart

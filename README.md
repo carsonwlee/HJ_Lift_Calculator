@@ -6,7 +6,7 @@ The HondaJet Lift Increase Calculator is a web-based tool designed to help pilot
 ## Features
 - Calculate Minimum Flying Speed based on landing weight
 - Determine VREF (Reference Speed) for approach
-- Account for wind corrections in approach speed
+- Account for additional speed a pilot may add to VREF
 - Visualize lift increases through an interactive chart
 - Real-time calculations and updates
 
@@ -14,7 +14,7 @@ The HondaJet Lift Increase Calculator is a web-based tool designed to help pilot
 
 ### 1. Input Parameters
 - **Landing Weight**: Must be between 7,500 lbs and 11,100 lbs
-- **Wind Correction Factor**: Must be 0 or greater (in knots)
+- **Additional Speed Above VREF**: Must be 0 or greater (in knots)
 
 ### 2. Speed Calculations
 
@@ -44,9 +44,9 @@ VREF is calculated as 1.23 times stall speed:
 V_ref = 1.23 × V_min
 
 #### Wind-Adjusted Approach Speed
-The final approach speed adds the wind correction factor to VREF:
+The final approach speed adds the additional speed a pilot may add to VREF:
 
-V_approach = V_ref + Wind_correction
+V_approach = V_ref + Additional_speed
 
 ### 3. Lift Calculations
 
@@ -57,7 +57,6 @@ L ∝ V²
 At minimum flying speed (V_min), lift equals weight. As speed increases, lift increases according to the square of the velocity ratio:
 
 L = W × (V / V_min)²
-
 
 Lift increases are calculated as percentages:
 - Increase from VREF: ((L_adjusted / L_vref) - 1) × 100
@@ -80,13 +79,14 @@ Lift increases are calculated as percentages:
 ## Limitations and Disclaimers
 - Calculations are based on standard pressure and temperature conditions
 - Assumes landing flap configuration
+- Lift increase represents the maximum possible increase
 - For educational purposes only
 - Not a replacement for official aircraft documentation
 - Always refer to the Aircraft Flight Manual (AFM) for operational decisions
 
 ## Usage
 1. Enter the aircraft's landing weight (7,500 - 11,100 lbs)
-2. Input any wind correction factor (0 or greater)
+2. Input any additional speed above VREF (0 or greater)
 3. Click "Calculate" or let the values update automatically
 4. Review the calculated speeds and lift increases
 5. Refer to the chart for visual representation of lift increases
