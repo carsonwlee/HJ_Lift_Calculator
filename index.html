@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HondaJetLift Increase Calculator</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Include Chart.js from CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Include Chart.js Data Labels plugin -->
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>HondaJet Lift Increase Calculator</h1>
+    <div class="input-group">
+      <label for="landingWeight">Landing Weight (lbs):</label>
+      <input type="number" id="landingWeight" value="8500" min="7500" max="11100">
+    </div>
+    <div class="input-group">
+      <label for="windCorrection">Wind Correction Factor (knots):</label>
+      <input type="number" id="windCorrection" value="15" min="0">
+    </div>
+    <button id="calculateBtn">Calculate</button>
+    <div id="result">
+      <p>Minimum Flying Speed: <span id="minFlyingSpeed">0</span> knots</p>
+      <p>VREF Speed: <span id="vrefSpeed">0</span> knots</p>
+      <p>Wind Corrected Approach Speed: <span id="adjustedSpeed">0</span> knots</p>
+      <p>Additional Lift compared to VREF: <span id="liftIncreaseVref">0</span>%</p>
+      <p>Additional Lift compared to Minimum Flying Speed: <span id="liftIncreaseMin">0</span>%</p>
+    </div>
+    <canvas id="liftChart"></canvas>
+    <div class="disclaimer">
+      <p><strong>Disclaimer:</strong> This tool provides approximate calculations for educational purposes only. All calculations are based on standard pressure and temperature conditions with flaps in the landing position. Always consult the official Aircraft Flight Manual (AFM) and follow all regulatory guidelines for flight operations. Do not rely solely on this tool for critical flight decisions.</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

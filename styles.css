@@ -1,0 +1,94 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  color: #333;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  width: 90%;
+  max-width: 800px;
+  margin: 30px auto;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  text-align: center;
+  color: #1e3c72;
+  font-size: 2.5em;
+  margin-bottom: 30px;
+}
+
+.input-group {
+  margin: 25px 0;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #2a5298;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+input[type="number"]:focus {
+  border-color: #1e3c72;
+  outline: none;
+}
+
+#calculateBtn {
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#calculateBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+#result {
+  margin: 30px 0;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#result p {
+  margin: 15px 0;
+  font-size: 1.1em;
+}
+
+#result span {
+  font-weight: bold;
+  color: #1e3c72;
+}
+
+canvas {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  background: white;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
