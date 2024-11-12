@@ -74,18 +74,18 @@ let liftChart; // Global variable to hold the chart instance
 
 function updateChart(labels, liftData) {
   const ctx = document.getElementById('liftChart').getContext('2d');
+  
+  const chartLabels = ['Minimum Flying Speed', 'VREF Speed', `${windCorrection} Knots Added To VREF`];
 
   if (liftChart) {
-    // Update the chart data
-    liftChart.data.labels = labels;
+    liftChart.data.labels = chartLabels;
     liftChart.data.datasets[0].data = liftData;
     liftChart.update();
   } else {
-    // Create a new chart
     liftChart = new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: labels,
+        labels: chartLabels,
         datasets: [{
           label: 'Lift (lbs)',
           data: liftData,
@@ -93,6 +93,8 @@ function updateChart(labels, liftData) {
         }]
       },
       options: {
+        responsive: true,
+        maintainAspectRatio: false,
         indexAxis: 'x',
         plugins: {
           legend: {
@@ -110,22 +112,39 @@ function updateChart(labels, liftData) {
             align: 'top',
             formatter: function(value) {
               return `${value.toLocaleString()} lbs`;
+            },
+            font: {
+              size: 12
             }
           }
         },
         scales: {
           y: {
             beginAtZero: true,
-            max: Math.max(20000, Math.max(...liftData) * 1.1), // Set max to a fixed value or 10% above the highest lift value
+            max: Math.max(20000, Math.max(...liftData) * 1.1),
             title: {
               display: true,
-              text: 'Lift (lbs)'
+              text: 'Lift (lbs)',
+              font: {
+                size: 12
+              }
+            },
+            ticks: {
+              font: {
+                size: 12
+              }
             }
           },
           x: {
             title: {
-              display: true,
-              text: ''
+              display: false
+            },
+            ticks: {
+              font: {
+                size: 12
+              },
+              maxRotation: 45,
+              minRotation: 45
             }
           }
         }

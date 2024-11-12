@@ -1,7 +1,7 @@
 # HondaJet Lift Increase Calculator
 
 ## Overview
-The HondaJet Lift Increase Calculator is a web-based tool designed to help pilots understand the relationship between aircraft speed and lift during approach and landing phases. This calculator specifically focuses on the HondaJet aircraft and provides insights into how different approach speeds affect the total lift generated.
+The HondaJet Lift Increase Calculator is a web-based tool designed to help pilots understand the relationship between aircraft speed and lift during approach and landing phases. This calculator specifically focuses on the HondaJet aircraft and provides insights into how different approach speeds affect the total possible lift generated.
 
 ## Features
 - Calculate Minimum Flying Speed based on landing weight
@@ -74,7 +74,6 @@ Lift increases are calculated as percentages:
 - Real-time input validation
 - Responsive design
 - Interactive chart updates
-- Precise mathematical calculations
 
 ## Limitations and Disclaimers
 - Calculations are based on standard pressure and temperature conditions
